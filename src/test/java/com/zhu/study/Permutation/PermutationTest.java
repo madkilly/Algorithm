@@ -12,32 +12,32 @@ import org.junit.Test;
  */
 public class PermutationTest {
 	
-	public void swap(Character a,Character b){
-		Character tmp = b;
-		b=a;
-		a=tmp;
+	public void swap(char[] src,int poss,int post){
+		char tmp=src[post];
+		src[post]=src[poss];
+		src[poss]=tmp;
 	}
 	
-	public List<String> permutation(String s){
-		List<String> lists=new ArrayList<String>();
-		if(s.length()==1){
-			lists.add(s);
-			return lists;
-		}
+	public void permutation(List<String> lists,String s,int index){
 		char[] cs=s.toCharArray();
-		StringBuilder sb =new StringBuilder();
-		for(int i=1;i<cs.length;i++){
-			
+		
+		if(index>=s.length()){
+			lists.add(new String(cs));
 		}
-			
-		return null;
+		for(int i=index;i<cs.length;i++){
+			swap(cs,index,i);
+			permutation(lists,new String(cs),index+1);
+		}
 	}
 	@Test
 	public void testPermutation(){
 		StringBuilder sb =new StringBuilder();
-		char[] a =new char[] {'z','h','u'};
-		swap(a[0],a[2]);
-		System.out.println(sb.append(a).toString());
+		List<String> lists=new ArrayList<String>();
+        String src ="zhu";
+        permutation(lists,src, 0);
+        for(String s : lists){
+        	System.out.println(s);
+        }
 	}
 
 }
