@@ -1,16 +1,17 @@
 package com.zhu.study.singletion;
-//ÀÁººÄ£Ê½²»ÄÜ±£Ö¤µ¥Àý
+//ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½Ü±ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
 public class SingletionLazy {
 	private volatile static SingletionLazy instance=null;
+	
+	static{
+		instance = new SingletionLazy();
+	}
 	
 	private  SingletionLazy(){
 		
 	}
 
 	public static SingletionLazy getInstance(){
-		if(instance==null){
-			instance=new SingletionLazy();
-		}
 		return instance;
 	}
 }
